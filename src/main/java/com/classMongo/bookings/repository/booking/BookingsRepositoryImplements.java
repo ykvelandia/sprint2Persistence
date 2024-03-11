@@ -1,11 +1,14 @@
-package com.classMongo.bookings.repository.mongo.bookings;
+package com.classMongo.bookings.repository.booking;
 
-import com.classMongo.bookings.model.Bookings;
-import com.classMongo.bookings.repository.BookingsRepository;
+import com.classMongo.bookings.model.booking.Bookings;
+import com.classMongo.bookings.repository.booking.BookingsRepository;
+import com.classMongo.bookings.repository.booking.mongodb.BookingsMongoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+
 @Repository
 public class BookingsRepositoryImplements implements BookingsRepository{
     @Autowired
@@ -18,7 +21,8 @@ public class BookingsRepositoryImplements implements BookingsRepository{
 
     @Override
     public Bookings findBookingsById(String id) {
-        return bookingsMongoRepository.findById(id).get();
+        Optional<Bookings> optionalBooking = bookingsMongoRepository.findById(id);
+        return optionalBooking.orElse(null);
     }
 
     @Override
@@ -36,9 +40,7 @@ public class BookingsRepositoryImplements implements BookingsRepository{
         }else{
             return false;
         }
-
     }
-
     @Override
     public Boolean deleteBooking(String id) {
         Bookings bookingsFound = findBookingsById(id);

@@ -1,6 +1,6 @@
-package com.classMongo.bookings.repository;
+package com.classMongo.bookings.repository.booking;
 
-import com.classMongo.bookings.model.Bookings;
+import com.classMongo.bookings.model.booking.Bookings;
 
 import java.util.List;
 

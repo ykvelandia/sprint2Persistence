@@ -1,49 +1,35 @@
 package com.classMongo.bookings.dto.users;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDate;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class UsersDto {
-    private String username;
+    private String firstName;
+    private String lastName     ;
     private String email;
-    private String cellphone;
     private LocalDate birthDate;
+    private String password;
+    private LocalDate userRegistration;
 
-    public UsersDto(String username, String email, String cellphone, LocalDate birthDate) {
-        this.username = username;
-        this.email = email;
-        this.cellphone = cellphone;
+    public UsersDto(String firstName, String lastName, LocalDate birthDate,String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.birthDate = birthDate;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
         this.email = email;
+        this.password = password;
     }
 
-    public String getCellphone() {
-        return cellphone;
-    }
 
-    public void setCellphone(String cellphone) {
-        this.cellphone = cellphone;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
+    public UsersDto(String firstName, String lastName, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
     }
 }

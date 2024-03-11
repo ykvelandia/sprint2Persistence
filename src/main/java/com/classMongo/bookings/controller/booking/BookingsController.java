@@ -1,4 +1,4 @@
-package com.classMongo.bookings.controller;
+package com.classMongo.bookings.controller.booking;
 
 import com.classMongo.bookings.dto.bookings.BookingsDto;
 import com.classMongo.bookings.dto.bookings.BookingsResponseDto;
@@ -14,16 +14,17 @@ import java.util.NoSuchElementException;
 @RequestMapping("/v1/bookings")
 public class BookingsController {
 
-    private final BookingsService bookingsService;
+    private BookingsService bookingsService;
 
-    public BookingsController(BookingsService bookingsService) {
-        this.bookingsService = bookingsService;
-    }
     @GetMapping
     public ResponseEntity<List<BookingsResponseDto>> getAllBookings(){
-        return new ResponseEntity<>(bookingsService.getAllBookings(), HttpStatus.OK);
+        try{
+            return ResponseEntity.ok(bookingsService.getAllBookings());
+        }catch (Exception e){
+            return new ResponseEntity("Error in getAllBookings controller: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
-    @GetMapping("/{id}")
+    @GetMapping("/{idBooking}")
     public ResponseEntity<BookingsResponseDto> findBookingsById(@PathVariable String id){
         try {
             return new ResponseEntity<>(bookingsService.findBookingsById(id), HttpStatus.OK);
@@ -36,7 +37,7 @@ public class BookingsController {
         return new ResponseEntity<>(bookingsService.createBookings(bookingsDto), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{idBooking}")
     public ResponseEntity<Boolean> updateBookings(@PathVariable String id, @RequestBody BookingsDto bookingsDto){
         try {
             Boolean isUpdated = bookingsService.updateBookings(id, bookingsDto);
