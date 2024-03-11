@@ -1,6 +1,6 @@
 package com.classMongo.bookings.dto.bookings;
 
-import com.classMongo.bookings.model.Bookings;
+import com.classMongo.bookings.model.booking.Bookings;
 
 public class BookingsMapper {
 

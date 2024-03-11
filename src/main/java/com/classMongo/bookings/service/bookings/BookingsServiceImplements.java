@@ -3,7 +3,7 @@ package com.classMongo.bookings.service.bookings;
 import com.classMongo.bookings.dto.bookings.BookingsDto;
 import com.classMongo.bookings.dto.bookings.BookingsMapper;
 import com.classMongo.bookings.dto.bookings.BookingsResponseDto;
-import com.classMongo.bookings.repository.BookingsRepository;
+import com.classMongo.bookings.repository.booking.BookingsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
