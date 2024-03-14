@@ -6,7 +6,6 @@ import com.classMongo.bookings.service.bookings.BookingsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -24,7 +23,6 @@ public class BookingsController {
             return new ResponseEntity("Error in getAllBookings controller: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
     @GetMapping("/{idBooking}")
     public ResponseEntity<BookingsResponseDto> findBookingsById(@PathVariable String id) {
         try {
@@ -38,7 +36,6 @@ public class BookingsController {
     public ResponseEntity<BookingsResponseDto> createBookings(@RequestBody BookingsDto bookingsDto) {
         return new ResponseEntity<>(bookingsService.createBookings(bookingsDto), HttpStatus.CREATED);
     }
-
     @PutMapping("/{idBooking}")
     public ResponseEntity<Boolean> updateBookings(@PathVariable String id, @RequestBody BookingsDto bookingsDto) {
         try {
@@ -53,12 +50,10 @@ public class BookingsController {
             return new ResponseEntity("The bookings " + id + " doesn't in the data base", HttpStatus.NOT_FOUND);
         }
     }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> deleteBookings(@PathVariable String id) {
         return new ResponseEntity<>(bookingsService.deleteBookings(id), HttpStatus.OK);
     }
-
     @GetMapping("/bookings/{id}")
     public ResponseEntity<Void> findBookingById(@PathVariable String id) {
         BookingsResponseDto bookingDto = bookingsService.findBookingsById(id);
