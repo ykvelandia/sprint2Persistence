@@ -20,6 +20,7 @@ public class BookingsServiceImplements implements BookingsService{
         List<BookingsResponseDto> bookingsResponseDtos = new ArrayList<>();
         bookingsRepository.getAllBookings().forEach(bookings -> bookingsResponseDtos.add(BookingsMapper.bookingsResponseDto(bookings)));
         return bookingsResponseDtos;
+
     }
 
     @Override

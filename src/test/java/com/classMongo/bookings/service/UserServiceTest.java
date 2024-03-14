@@ -36,7 +36,7 @@ public class UserServiceTest {
     }
     @Test
     public void testDeleteUser() {
-        String userId = "exampleUserId";
+        String userId = "1";
         when(usersRepository.deleteUserById(userId)).thenReturn(true);
         Boolean result = usersService.deleteUser(userId);
         assertTrue(result);
