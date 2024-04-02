@@ -25,8 +25,6 @@ public class UsersController {
         this.userService = userService;
         //loadSampleUsers();
     }
-
-
     public void loadSampleUsers() {
         LocalDate fecha = LocalDate.of(2024, 3, 22);
         UsersDto userEntity = new UsersDto("Ada", " Lovelace", fecha, "ada@mail.com", "passw0rd");
@@ -34,6 +32,8 @@ public class UsersController {
         UsersDto adminUserEntity = new UsersDto("Ada", "Admin", fecha, "admin@mail.com", "passw0rd");
         UsersResponseDto userCreated = userService.createUser(adminUserEntity);
         createUserAdmin(new UsersDto("Super", "admin", fecha, "super@mail.com", "123"));
+        UsersDto adminUser= new UsersDto("Super", "Admin","superadmin@gmail.com", "Admin123");
+        userService.createUserAdmin(adminUser);
     }
     @GetMapping
     public ResponseEntity<List<UsersResponseDto>> getAllUser(){
